@@ -2,9 +2,13 @@ import prisma from "../prisma/prisma";
 import type { Link, Usuario } from "@prisma/client";
 
 export class linkServices {
-    todosOsLinks = async (): Promise<void> => {};
+    async todosOsLinks(): Promise<Link[] | []> {
+        const links: Link[] | null = await prisma.link.findMany();
+        if (!links) return [];
+        return links;
+    }
 
-    todosOsLinksPorId = async (id: string): Promise<Link[] | []> => {
+    async todosOsLinksPorId(id: string): Promise<Link[] | []> {
         const user: Usuario | null = await prisma.usuario.findUnique({
             where: {
                 id,
@@ -19,5 +23,5 @@ export class linkServices {
         if (!links) return [];
 
         return links;
-    };
+    }
 }

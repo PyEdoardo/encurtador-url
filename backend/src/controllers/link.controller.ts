@@ -1,6 +1,6 @@
 import type { Request, Response } from "@tinyhttp/app";
 import type { Link } from "@prisma/client";
-import { linkServices } from "../services/link.services";
+import { linkServices } from "../services/link.service";
 
 export class LinkController {
     private linkService: linkServices;
@@ -9,7 +9,7 @@ export class LinkController {
         this.linkService = new linkServices();
     }
 
-    pegarLinksIdUser = async (req: Request, res: Response) => {
+    async pegarLinksIdUser(req: Request, res: Response): Promise<void> {
         const { id } = req.body;
 
         if (!id) {
@@ -17,10 +17,12 @@ export class LinkController {
         }
         const links: Link[] | [] = await this.linkService.todosOsLinksPorId(id);
 
-        if (!links) {
-            res.status(405).send([{}]);
-        }
+        res.status(200).json(links);
+    }
+
+    async pegarLinks(req: Request, res: Response): Promise<void> {
+        const links: Link[] | [] = await this.linkService.todosOsLinks();
 
         res.status(200).json(links);
-    };
+    }
 }

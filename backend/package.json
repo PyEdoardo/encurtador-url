@@ -1,23 +1,24 @@
 {
-  "name": "backend",
-  "module": "src/server.ts",
-  "scripts": {
-    "dev": "bun src/server.ts"
-  },
-  "type": "module",
-  "private": true,
-  "devDependencies": {
-    "@types/bun": "latest"
-  },
-  "peerDependencies": {
-    "typescript": "^5"
-  },
-  "dependencies": {
-    "@prisma/client": "^6.18.0",
-    "@tinyhttp/app": "^3.0.1",
-    "@tinyhttp/router": "^2.2.3",
-    "dotenv": "^17.2.3",
-    "milliparsec": "^5.1.0",
-    "prisma": "^6.18.0"
-  }
+    "name": "backend",
+    "module": "src/server.ts",
+    "scripts": {
+        "dev": "bun --watch src/server.ts"
+    },
+    "type": "module",
+    "private": true,
+    "devDependencies": {
+        "@types/bun": "latest"
+    },
+    "peerDependencies": {
+        "typescript": "^5"
+    },
+    "dependencies": {
+        "@prisma/client": "^6.18.0",
+        "@tinyhttp/app": "^3.0.1",
+        "@tinyhttp/jwt": "^2.0.0",
+        "@tinyhttp/router": "^2.2.3",
+        "dotenv": "^17.2.3",
+        "milliparsec": "^5.1.0",
+        "prisma": "^6.18.0"
+    }
 }
